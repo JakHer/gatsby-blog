@@ -1,24 +1,27 @@
 import React from "react"
 import { Link } from "gatsby"
+import styled from "styled-components"
+import Navigation from "../components/Navigation/Navigation"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const Description = styled.div`
+  font-size: 2rem;
+  margin-left: 18px;
+  padding: 12px;
+  color: pink;
+`
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
+  <>
+    <Navigation />
+    <Description>Hi garnuchu</Description>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    <br />
-    <Link to="/blog/">Go to Blog page</Link>
-  </Layout>
+    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}></div>
+    <Link to="/articles/">Go to Articles page</Link>
+    <Link to="/about/">Go to about page</Link>
+    <Link to="/contact/">Go to contact page</Link>
+    <Link to="/gallery/">Go to gallery page</Link>
+  </>
 )
 
 export default IndexPage
