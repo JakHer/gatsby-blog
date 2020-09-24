@@ -1,12 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled, { className } from "styled-components"
+import styled from "styled-components"
 
 const StyledNav = styled.nav`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  width: 100%;
 
   a {
     text-decoration: none;
@@ -23,12 +26,10 @@ const StyledLogo = styled.span`
 const StyledList = styled.ul`
   display: flex;
   flex-direction: row;
-  margin: 0;
-  padding: 0;
   list-style: none;
 `
 
-const StyledLink = styled.li`
+const StyledLink = styled(Link)`
   font-size: 14px;
   font-weight: 600;
   margin-left: 32px;
@@ -41,16 +42,16 @@ const Navigation = () => (
     </StyledLogo>
     <StyledList>
       <li>
-        <StyledLink to="articles">articles</StyledLink>
+        <StyledLink to="/articles">articles</StyledLink>
       </li>
       <li>
-        <StyledLink to="gallery">gallery</StyledLink>
+        <StyledLink to="/gallery">gallery</StyledLink>
       </li>
       <li>
-        <StyledLink to="contact">contact</StyledLink>
+        <StyledLink to="/contact">contact</StyledLink>
       </li>
       <li>
-        <StyledLink to="about">about</StyledLink>
+        <StyledLink to="/about">about</StyledLink>
       </li>
     </StyledList>
   </StyledNav>
