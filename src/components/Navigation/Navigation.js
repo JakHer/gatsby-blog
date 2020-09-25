@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { func } from "prop-types"
+import Logo from "../Logo/Logo"
+import BurgerIcon from "../BurgerIcon/BurgerIcon"
 
 const StyledNav = styled.nav`
   display: flex;
@@ -25,12 +26,6 @@ const StyledNav = styled.nav`
   }
 `
 
-const StyledLogo = styled.span`
-  font-weight: 700;
-  font-size: 20px;
-  margin-right: 10px;
-`
-
 const StyledList = styled.ul`
   display: flex;
   flex-direction: row;
@@ -39,7 +34,7 @@ const StyledList = styled.ul`
   @media (max-width: 800px) {
     position: absolute;
     width: 100%;
-    top: 50px;
+    top: 70px;
     left: 0;
     z-index: 9999;
     flex-direction: column;
@@ -101,20 +96,13 @@ const StyledListItem = styled.li`
 const Navigation = () => {
   const [isNavigationOpen, toggleNavigation] = useState(false)
 
-  const handleMenuClick = e => {
-    e.preventDefault()
-    toggleNavigation(isNavigationOpen(false))
-    console.log(`dziala`)
-  }
-
   return (
     <StyledNav>
-      <StyledLogo>
-        <Link to="/">JaHe</Link>
-      </StyledLogo>
-      <button onClick={() => toggleNavigation(!isNavigationOpen)}>
-        {isNavigationOpen ? "Open" : "Close"}
-      </button>
+      <Logo />
+      <BurgerIcon
+        isNavigationOpen={isNavigationOpen}
+        toggleNavigation={toggleNavigation}
+      />
       <StyledList isNavigationOpen={isNavigationOpen}>
         <StyledListItem>
           <StyledLink
