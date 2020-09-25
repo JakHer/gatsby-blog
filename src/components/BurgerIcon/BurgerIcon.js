@@ -2,17 +2,18 @@ import React from "react"
 import styled from "styled-components"
 
 const StyledIcon = styled.button`
+  position: relative;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
   z-index: 10;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 20px;
   height: 16px;
+  z-index: 99999;
 
   &:focus {
     outline: none;
@@ -20,11 +21,13 @@ const StyledIcon = styled.button`
 
   div {
     width: 100%;
-    height: 2px;
-    background-color: #000;
+    height: 3px;
     border-radius: 10px;
     transform-origin: 1px;
     transition: ease 0.4s transform, ease 0.4s opacity;
+    background: #000;
+    text-align: center;
+    position: relative;
 
     &:nth-child(1) {
       transform: ${({ isNavigationOpen }) =>
