@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useRef } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import Logo from "../Logo/Logo"
 import BurgerIcon from "../BurgerIcon/BurgerIcon"
+import { OutsideClickClosesMenu } from "../../hooks/hooks"
 
 const StyledNav = styled.nav`
   display: flex;
@@ -96,8 +97,11 @@ const StyledListItem = styled.li`
 const Navigation = () => {
   const [isNavigationOpen, toggleNavigation] = useState(false)
 
+  const node = useRef()
+  OutsideClickClosesMenu(node, () => toggleNavigation(false))
+
   return (
-    <StyledNav>
+    <StyledNav ref={node}>
       <Logo />
       <BurgerIcon
         isNavigationOpen={isNavigationOpen}
