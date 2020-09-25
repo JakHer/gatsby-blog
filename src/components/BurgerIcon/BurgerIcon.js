@@ -20,13 +20,13 @@ const StyledIcon = styled.button`
   }
 
   div {
-    width: 100%;
+    width: 20px;
     height: 3px;
+    background: #111;
     border-radius: 10px;
     transform-origin: 1px;
-    transition: ease 0.4s transform, ease 0.4s opacity;
-    background: #000;
-    text-align: center;
+    transition: linear 0.4s transform, linear 0.4s opacity;
+
     position: relative;
 
     &:nth-child(1) {
