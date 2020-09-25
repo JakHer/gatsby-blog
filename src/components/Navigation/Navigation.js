@@ -110,8 +110,11 @@ const Navigation = () => {
   OutsideClickClosesMenu(node, () => toggleNavigation(false))
 
   return (
-    <StyledNav ref={node}>
-      <Logo />
+    <StyledNav onClick={() => toggleNavigation(!isNavigationOpen)} ref={node}>
+      <Logo
+        isNavigationOpen={isNavigationOpen}
+        toggleNavigation={toggleNavigation}
+      />
       <BurgerIcon
         isNavigationOpen={isNavigationOpen}
         toggleNavigation={toggleNavigation}
