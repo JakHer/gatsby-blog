@@ -1,6 +1,20 @@
 import { createGlobalStyle } from "styled-components"
 
+let resizeTimer
+window.addEventListener("resize", () => {
+  document.body.classList.add("resize-animation-stopper")
+  clearTimeout(resizeTimer)
+  resizeTimer = setTimeout(() => {
+    document.body.classList.remove("resize-animation-stopper")
+  }, 400)
+})
+
 const GlobalStyle = createGlobalStyle`
+
+.resize-animation-stopper * {
+  animation: none !important;
+  transition: none !important;
+}
 
 html {
  box-sizing: border-box;
