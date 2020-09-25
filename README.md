@@ -27,7 +27,7 @@ Discovering React's advanced techiques
 - Gatsby (written on the 2.24.63 version) [Create React App](https://www.gatsbyjs.com/docs/)
 - Project Setup (using gatsby-site)
 - Styled Components
-- Google Fonts
+- GraphQL
 
 ## Setup
 
