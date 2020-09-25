@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { useMenu } from "../../context/index"
 
 const StyledIcon = styled.button`
   position: relative;
@@ -26,23 +27,22 @@ const StyledIcon = styled.button`
     border-radius: 10px;
     transform-origin: 1px;
     transition: linear 0.4s transform, linear 0.4s opacity;
-
     position: relative;
 
     &:nth-child(1) {
-      transform: ${({ isNavigationOpen }) =>
-        isNavigationOpen ? "rotate(45deg)" : "rotate(0)"};
+      transform: ${({ isMenuActive }) =>
+        isMenuActive ? "rotate(45deg)" : "rotate(0)"};
     }
 
     &:nth-child(2) {
-      opacity: ${({ isNavigationOpen }) => (isNavigationOpen ? "0" : "1")};
-      transform: ${({ isNavigationOpen }) =>
-        isNavigationOpen ? "translateX(20px)" : "translateX(0)"};
+      opacity: ${({ isMenuActive }) => (isMenuActive ? "0" : "1")};
+      transform: ${({ isMenuActive }) =>
+        isMenuActive ? "translateX(20px)" : "translateX(0)"};
     }
 
     &:nth-child(3) {
-      transform: ${({ isNavigationOpen }) =>
-        isNavigationOpen ? "rotate(-45deg)" : "rotate(0)"};
+      transform: ${({ isMenuActive }) =>
+        isMenuActive ? "rotate(-45deg)" : "rotate(0)"};
     }
   }
 
@@ -51,13 +51,12 @@ const StyledIcon = styled.button`
   }
 `
 
-const BurgerIcon = ({ isNavigationOpen, toggleNavigation }) => {
+const BurgerIcon = () => {
+  const { toggle, value } = useMenu()
+
   return (
     <>
-      <StyledIcon
-        isNavigationOpen={isNavigationOpen}
-        onClick={() => toggleNavigation(!isNavigationOpen)}
-      >
+      <StyledIcon onClick={toggle} isMenuActive={value}>
         <div />
         <div />
         <div />

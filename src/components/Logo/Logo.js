@@ -14,10 +14,12 @@ const StyledLogo = styled.button`
   }
 `
 
-const Logo = ({ isNavigationOpen, toggleNavigation }) => (
-  <StyledLogo onClick={() => toggleNavigation(!isNavigationOpen)}>
-    <Link to="/">JaHe</Link>
-  </StyledLogo>
-)
+const Logo = () => {
+  return (
+    <StyledLogo>
+      <Link to="/">JaHe</Link>
+    </StyledLogo>
+  )
+}
 
 export default Logo

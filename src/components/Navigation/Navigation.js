@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react"
-import { Link } from "gatsby"
+import React, { useRef } from "react"
 import styled from "styled-components"
 import Logo from "../Logo/Logo"
 import BurgerIcon from "../BurgerIcon/BurgerIcon"
+import NavItemsList from "./NavItemsList/NavItemsList"
 import { OutsideClickClosesMenu } from "../../hooks/hooks"
+import { useMenu } from "../../context/index"
 
 const StyledNav = styled.nav`
   display: flex;
@@ -29,130 +30,16 @@ const StyledNav = styled.nav`
     width: 100%;
   }
 `
-
-const StyledList = styled.ul`
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-
-  @media (max-width: 800px) {
-    position: absolute;
-    width: 100%;
-    top: 65px;
-    left: 0;
-    z-index: 9999;
-    flex-direction: column;
-    background-color: #f1f1f1;
-    align-items: flex-end;
-
-    transform: ${({ isNavigationOpen }) =>
-      isNavigationOpen ? "translateX(0)" : "translateX(-100vw)"};
-    transition: 0.4s ease transform;
-  }
-`
-
-const activeClassName = "active"
-
-const StyledLink = styled(Link).attrs({
-  activeClassName: activeClassName,
-})`
-  font-size: 14px;
-  font-weight: 600;
-  margin-left: 32px;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: 0.4s ease transform, 0.4s ease opacity;
-    height: 4px;
-    background-color: rgba(255, 182, 193, 0.4);
-    border-radius: 20px;
-    z-index: 1;
-  }
-
-  &:hover::after {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-
-  &.${activeClassName} {
-    &::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: rgba(255, 182, 193, 1);
-      transform: translateY(50%);
-      border-radius: 20px;
-      z-index: 1;
-      opacity: 1;
-    }
-  }
-`
-const StyledListItem = styled.li`
-  padding: 0 20px;
-  @media (max-width: 800px) {
-    padding: 20px;
-  }
-`
-
 const Navigation = () => {
-  const [isNavigationOpen, toggleNavigation] = useState(false)
-
+  const { toggle } = useMenu()
   const node = useRef()
-  OutsideClickClosesMenu(node, () => toggleNavigation(false))
+  OutsideClickClosesMenu(node, () => toggle(false))
 
   return (
-    <StyledNav onClick={() => toggleNavigation(!isNavigationOpen)} ref={node}>
-      <Logo
-        isNavigationOpen={isNavigationOpen}
-        toggleNavigation={toggleNavigation}
-      />
-      <BurgerIcon
-        isNavigationOpen={isNavigationOpen}
-        toggleNavigation={toggleNavigation}
-      />
-      <StyledList isNavigationOpen={isNavigationOpen}>
-        <StyledListItem>
-          <StyledLink
-            onClick={() => toggleNavigation(!isNavigationOpen)}
-            to="/articles"
-          >
-            articles
-          </StyledLink>
-        </StyledListItem>
-        <StyledListItem>
-          <StyledLink
-            onClick={() => toggleNavigation(!isNavigationOpen)}
-            to="/gallery"
-          >
-            gallery
-          </StyledLink>
-        </StyledListItem>
-        <StyledListItem>
-          <StyledLink
-            onClick={() => toggleNavigation(!isNavigationOpen)}
-            to="/contact"
-          >
-            contact
-          </StyledLink>
-        </StyledListItem>
-        <StyledListItem>
-          <StyledLink
-            onClick={() => toggleNavigation(!isNavigationOpen)}
-            to="/about"
-          >
-            about
-          </StyledLink>
-        </StyledListItem>
-      </StyledList>
+    <StyledNav ref={node}>
+      <Logo />
+      <BurgerIcon />
+      <NavItemsList />
     </StyledNav>
   )
 }
