@@ -19,7 +19,6 @@ export const useMenu = () => {
   if (context === undefined) {
     throw new Error("useMenu should me nested in ContextProvider")
   }
-
   return context
 }
 
