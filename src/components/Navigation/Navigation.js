@@ -31,9 +31,9 @@ const StyledNav = styled.nav`
   }
 `
 const Navigation = () => {
-  const { toggle } = useMenu()
+  const { setMenuFalse } = useMenu()
   const node = useRef()
-  OutsideClickClosesMenu(node, () => toggle(false))
+  OutsideClickClosesMenu(node, () => setMenuFalse(false))
 
   return (
     <StyledNav ref={node}>

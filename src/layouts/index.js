@@ -2,7 +2,6 @@ import React from "react"
 import Navigation from "../components/Navigation/Navigation"
 import GlobalStyle from "../assets/styles/globalStyles"
 import { PreventTransitionOnResize } from "../hooks/hooks"
-// import AppContext from "../context/index"
 import ContextProvider from "../context/index"
 
 const MainLayout = ({ children }) => {
