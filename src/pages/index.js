@@ -1,6 +1,6 @@
 import React from "react"
+import { graphql } from "gatsby"
 import styled from "styled-components"
-import { Link } from "gatsby"
 import Button from "../components/Button/Button"
 
 const Description = styled.div`
@@ -10,10 +10,20 @@ const Description = styled.div`
   color: pink;
 `
 
-const IndexPage = () => (
+export const query = graphql`
+  {
+    file(name: { eq: "hero" }) {
+      publicURL
+    }
+  }
+`
+
+const IndexPage = ({ data }) => (
   <>
     <Description>Hi garnuchu</Description>
+    {console.log(data)}
     <p>Welcome to your new Gatsby site.</p>
+    <img src={data.file.publicURL} />
     <p>Now go build something great.</p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}></div>
     <Button>View my work</Button>
