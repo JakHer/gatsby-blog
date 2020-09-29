@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import Button from "../components/Button/Button"
+import Img from "gatsby-image"
 
 const StyledContentWrapper = styled.div`
   width: 60%;
@@ -15,7 +16,6 @@ const StyledContentWrapper = styled.div`
   @media (max-width: 1000px) {
     position: absolute;
     width: 100%;
-    /* text-align: center; */
     top: 0;
     left: 0;
     align-items: center;
@@ -44,8 +44,8 @@ const StyledDescription = styled.p`
   }
 `
 
-const StyledHero = styled.img`
-  position: absolute;
+const StyledImg = styled(Img)`
+  position: absolute !important;
   right: 0;
   bottom: 0;
   width: 40%;
@@ -55,7 +55,7 @@ const StyledHero = styled.img`
   filter: blur(2px);
 
   @media (max-width: 1000px) {
-    position: relative;
+    position: relative !important;
     width: 100%;
     height: 100%;
     z-index: 8;
@@ -76,9 +76,7 @@ export const query = graphql`
     file(name: { eq: "hero" }) {
       childImageSharp {
         fluid(maxHeight: 1200, maxWidth: 800, quality: 80) {
-          src
-          srcSet
-          sizes
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
@@ -86,7 +84,6 @@ export const query = graphql`
 `
 
 const IndexPage = ({ data }) => {
-  const { src, srcSet, sizes } = data.file.childImageSharp.fluid
   return (
     <StyledPageWrapper>
       <StyledContentWrapper>
@@ -94,7 +91,7 @@ const IndexPage = ({ data }) => {
         <StyledDescription>Creative Frotend Developer</StyledDescription>
         <Button>View my work</Button>
       </StyledContentWrapper>
-      <StyledHero src={src} srcSet={srcSet} sizes={sizes} />
+      <StyledImg fluid={data.file.childImageSharp.fluid} />
     </StyledPageWrapper>
   )
 }
