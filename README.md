@@ -28,6 +28,9 @@ Discovering React's advanced techiques
 - Project Setup (using gatsby-site)
 - Styled Components
 - GraphQL
+- RWD
+- Gatsby plugins
+- Sharp transformer
 
 ## Setup
 

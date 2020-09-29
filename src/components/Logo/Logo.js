@@ -27,8 +27,6 @@ const Logo = () => {
 
   return (
     <StyledLogo>
-      {console.log(myPath)}
-
       {myPath !== "/" ? (
         <StyledLink to="/">JaHe</StyledLink>
       ) : (

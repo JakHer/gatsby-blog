@@ -59,6 +59,7 @@ const StyledHero = styled.img`
     width: 100%;
     height: 100%;
     z-index: 8;
+    max-height: 80vh;
   }
 `
 
@@ -73,20 +74,29 @@ const StyledPageWrapper = styled.div`
 export const query = graphql`
   {
     file(name: { eq: "hero" }) {
-      publicURL
+      childImageSharp {
+        fluid(maxHeight: 1200, maxWidth: 800, quality: 80) {
+          src
+          srcSet
+          sizes
+        }
+      }
     }
   }
 `
 
-const IndexPage = ({ data }) => (
-  <StyledPageWrapper>
-    <StyledContentWrapper>
-      <Header>Jakub Hermyt</Header>
-      <StyledDescription>Creative Frotend Developer</StyledDescription>
-      <Button>View my work</Button>
-    </StyledContentWrapper>
-    <StyledHero src={data.file.publicURL} />
-  </StyledPageWrapper>
-)
+const IndexPage = ({ data }) => {
+  const { src, srcSet, sizes } = data.file.childImageSharp.fluid
+  return (
+    <StyledPageWrapper>
+      <StyledContentWrapper>
+        <Header>Jakub Hermyt</Header>
+        <StyledDescription>Creative Frotend Developer</StyledDescription>
+        <Button>View my work</Button>
+      </StyledContentWrapper>
+      <StyledHero src={src} srcSet={srcSet} sizes={sizes} />
+    </StyledPageWrapper>
+  )
+}
 
 export default IndexPage

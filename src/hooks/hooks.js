@@ -9,7 +9,6 @@ export const OutsideClickClosesMenu = (ref, handler) => {
       handler(e)
     }
     document.addEventListener("mousedown", listener)
-    console.log(`click`)
     return () => {
       document.removeEventListener("mousedown", listener)
     }
