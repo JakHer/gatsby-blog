@@ -14,10 +14,26 @@ const StyledLogo = styled.button`
   }
 `
 
+const StyledLink = styled(Link)`
+  color: inherit;
+`
+
+const StyledActiveLink = styled(Link)`
+  color: pink;
+`
+
 const Logo = () => {
+  let myPath = window.location.pathname
+
   return (
     <StyledLogo>
-      <Link to="/">JaHe</Link>
+      {console.log(myPath)}
+
+      {myPath !== "/" ? (
+        <StyledLink to="/">JaHe</StyledLink>
+      ) : (
+        <StyledActiveLink to="/">JaHe</StyledActiveLink>
+      )}
     </StyledLogo>
   )
 }

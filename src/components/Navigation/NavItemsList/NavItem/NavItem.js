@@ -12,6 +12,7 @@ const StyledLink = styled(Link).attrs({
   font-weight: 600;
   margin-left: 32px;
   position: relative;
+  color: inherit;
 
   &::after {
     content: "";

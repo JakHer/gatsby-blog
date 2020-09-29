@@ -20,7 +20,6 @@ const StyledNav = styled.nav`
 
   a {
     text-decoration: none;
-    color: inherit;
   }
 
   @media (max-width: 1000px) {
