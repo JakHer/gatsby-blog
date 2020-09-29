@@ -50,7 +50,7 @@ const StyledLink = styled(Link).attrs({
 `
 const StyledListItem = styled.li`
   padding: 0 20px;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     padding: 20px;
   }
 `

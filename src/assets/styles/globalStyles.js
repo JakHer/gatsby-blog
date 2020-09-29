@@ -25,7 +25,7 @@ body {
     padding: 120px 65px 0;
     font-family: "Montserrat", sans-serif;
 
-    @media (max-width: 800px){
+    @media (max-width: 1000px){
         padding: 120px 10px 0;
     }
 }

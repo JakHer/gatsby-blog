@@ -15,8 +15,7 @@ const StyledNav = styled.nav`
   left: 0;
   width: 100%;
   padding: 20px 30px;
-  z-index: 9999;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 10;
   background-color: rgba(255, 255, 255, 0.95);
 
   a {
@@ -24,7 +23,7 @@ const StyledNav = styled.nav`
     color: inherit;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     justify-content: space-between;
     padding: 20px 30px;
     width: 100%;

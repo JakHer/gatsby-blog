@@ -8,7 +8,7 @@ const StyledList = styled.ul`
   flex-direction: row;
   list-style: none;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     position: absolute;
     width: 100%;
     top: 65px;

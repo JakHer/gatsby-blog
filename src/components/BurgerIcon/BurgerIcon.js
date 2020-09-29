@@ -46,7 +46,7 @@ const StyledIcon = styled.button`
     }
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 1000px) {
     display: none;
   }
 `
