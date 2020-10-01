@@ -30,7 +30,9 @@ Discovering React's advanced techiques
 - GraphQL
 - RWD
 - Gatsby plugins
+- Gatsby Image
 - Sharp transformer
+- StaticQuery & useStaticQuery hook
 
 ## Setup
 
