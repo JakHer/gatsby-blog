@@ -34,6 +34,7 @@ Discovering React's advanced techiques
 - Sharp transformer
 - StaticQuery & useStaticQuery hook
 - MDX
+- Markdown && JSX
 
 ## Setup
 
