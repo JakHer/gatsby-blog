@@ -33,6 +33,7 @@ Discovering React's advanced techiques
 - Gatsby Image
 - Sharp transformer
 - StaticQuery & useStaticQuery hook
+- MDX
 
 ## Setup
 
