@@ -20,6 +20,7 @@ const ArticlesPage = ({ data }) => (
   </>
 )
 
+
 export const query = graphql`
   {
     allMdx {
