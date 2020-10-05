@@ -1,18 +1,16 @@
 import React from "react"
 import styled from "styled-components"
-import Img from "gatsby-image"
+import Image from "gatsby-image"
 
-const StyledImg = styled(Img)`
+const StyledImg = styled(Image)`
   width: 100%;
   height: 100%;
   z-index: 1;
-  display: block;
-  margin: 0 auto;
+  object-fit: cover;
 `
 
 const PreviewWrapper = styled.div`
   position: relative;
-  height: 100vh;
   width: 100%;
   height: 340px;
   background-color: hsl(0, 0%, 95%);
@@ -39,6 +37,13 @@ const PreviewInfoLabel = styled.div`
   color: white;
   padding: 5px 15px;
   z-index: 2;
+
+  h2 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 14px;
+  }
 `
 
 const ArticlePreview = ({ title, excerpt, featuredImage }) => (
