@@ -13,19 +13,8 @@ exports.createPages = async ({ graphql, actions }) => {
         allMdx {
           edges {
             node {
-              id
-              excerpt(pruneLength: 20)
               frontmatter {
-                title
-                author
                 slug
-                featuredImage {
-                  childImageSharp {
-                    fluid(maxHeight: 500, maxWidth: 700) {
-                      src
-                    }
-                  }
-                }
               }
             }
           }
@@ -34,23 +23,14 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  console.log(result.data.allMdx.edges)
-
   // Create blog post pages.
   result.data.allMdx.edges.forEach(post => {
     createPage({
       // Path for this page — require
-      path: `${post.node.frontmatter.slug}`,
+      path: `articles/${post.node.frontmatter.slug}`,
       component: blogPostTemplate,
       context: {
-        // Add optional context data to be inserted
-        // as props into the page component..
-        //
-        // The context data can also be used as
-        // arguments to the page GraphQL query.
-        //
-        // The page "path" is always available as a GraphQL
-        // argument.
+        slug: post.node.frontmatter.slug,
       },
     })
   })

@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Image from "gatsby-image"
+import { Link } from "gatsby"
 
 const StyledImg = styled(Image)`
   width: 100%;
@@ -9,7 +10,8 @@ const StyledImg = styled(Image)`
   object-fit: cover;
 `
 
-const PreviewWrapper = styled.div`
+const PreviewWrapper = styled(Link)`
+  display: block;
   position: relative;
   width: 100%;
   height: 340px;
@@ -46,9 +48,9 @@ const PreviewInfoLabel = styled.div`
   }
 `
 
-const ArticlePreview = ({ title, excerpt, featuredImage }) => (
-  <PreviewWrapper featuredImage={featuredImage}>
-    <StyledImg fluid={featuredImage} />
+const ArticlePreview = ({ title, excerpt, image, slug }) => (
+  <PreviewWrapper to={`/articles/${slug}`} image={image}>
+    <StyledImg fluid={image} />
     <PreviewInfoLabel>
       <h2>{title}</h2>
       <p>{excerpt}</p>

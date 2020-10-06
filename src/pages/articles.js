@@ -39,14 +39,16 @@ const ArticlesPage = ({ data }) => {
           ({
             node: {
               excerpt,
-              frontmatter: { title, slug, autor, featuredImage },
+              frontmatter: { title, slug, featuredImage },
             },
           }) => {
             return (
               <ArticlePreview
+                key={slug}
                 title={title}
                 excerpt={excerpt}
-                featuredImage={featuredImage.childImageSharp.fluid}
+                image={featuredImage.childImageSharp.fluid}
+                slug={slug}
               />
             )
           }
@@ -70,7 +72,7 @@ export const query = graphql`
             slug
             featuredImage {
               childImageSharp {
-                fluid(maxHeight: 500, maxWidth: 700, quality: 100) {
+                fluid(maxHeight: 500, maxWidth: 700, quality: 90) {
                   ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
