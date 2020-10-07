@@ -1,6 +1,7 @@
 import styled from "styled-components"
+import { Link } from "gatsby"
 
-const Button = styled.button`
+const Button = styled(Link)`
   background-color: black;
   border: none;
   padding: 10px 25px;
@@ -8,6 +9,7 @@ const Button = styled.button`
   font-size: 13px;
   font-weight: 600;
   flex-shrink: 0;
+  text-decoration: none;
 `
 
 export default Button

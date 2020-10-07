@@ -1,5 +1,19 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import styled from "styled-components"
+
+const StyledWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px 0;
+`
+
+const StyledParagraph = styled.p`
+  font-weight: 500;
+  margin-bottom: 0;
+`
 
 const query = graphql`
   {
@@ -16,12 +30,13 @@ const query = graphql`
 const Post = () => {
   const data = useStaticQuery(query)
 
-  const { author, title, description } = data.site.siteMetadata
+  const { author, title } = data.site.siteMetadata
 
   return (
-    <p>
-      {title} {description} {author}
-    </p>
+    <StyledWrapper>
+      <StyledParagraph>{title}</StyledParagraph>
+      <StyledParagraph>{author}</StyledParagraph>
+    </StyledWrapper>
   )
 }
 

@@ -24,9 +24,6 @@ const pageData = {
 }
 
 const ArticlesPage = ({ data }) => {
-  {
-    console.log(data)
-  }
   const {
     allMdx: { edges },
   } = data

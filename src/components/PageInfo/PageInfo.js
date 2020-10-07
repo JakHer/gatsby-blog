@@ -16,10 +16,10 @@ const Wrapper = styled.div`
   }
 `
 
-const PageInfo = ({ title, paragraph }) => (
+const PageInfo = ({ title, author }) => (
   <Wrapper>
     <h1>{title}</h1>
-    <p>{paragraph}</p>
+    <p>{author}</p>
   </Wrapper>
 )
 

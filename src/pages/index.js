@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 import Button from "../components/Button/Button"
 import Img from "gatsby-image"
-import Post from "../components/Post/Post"
 
 const StyledContentWrapper = styled.div`
   width: 60%;
@@ -76,10 +75,9 @@ const IndexPage = ({ data }) => {
   return (
     <StyledPageWrapper>
       <StyledContentWrapper>
-        <Post />
         <Header>Jakub Hermyt</Header>
         <StyledDescription>Creative Frotend Developer</StyledDescription>
-        <Button>View my work</Button>
+        <Button to="/gallery">View my work</Button>
       </StyledContentWrapper>
       <StyledImg fluid={data.file.childImageSharp.fluid} />
     </StyledPageWrapper>
