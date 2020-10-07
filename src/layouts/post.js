@@ -5,10 +5,14 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 
 const StyledImage = styled(Image)`
-  max-width: 250px;
+  max-width: 350px;
+  max-height: 350px;
   text-align: center;
-  margin: 0 auto;
   border-radius: 10px;
+
+  @media (max-width: 1000px) {
+    margin: 0 auto;
+  }
 `
 
 export const query = graphql`
@@ -33,9 +37,6 @@ export const query = graphql`
 `
 
 const PostLayout = ({ data }) => {
-  {
-    console.log(data.mdx)
-  }
   const { title, author } = data.mdx.frontmatter
   const { body } = data.mdx
   const { fluid } = data.mdx.frontmatter.featuredImage.childImageSharp
