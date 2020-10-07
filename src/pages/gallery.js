@@ -1,6 +1,62 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import axios from "axios"
+import styled from "styled-components"
+
+const StyledList = styled.ul`
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+const StyledListItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 0px 6px 16px rgba(24, 41, 67, 0.09);
+  border-radius: 20px;
+`
+
+const StyledLinkWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #f5f7fa;
+  padding: 20px 15px;
+`
+
+const StyledDescriptionWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 26px;
+`
+
+const StyledLink = styled.a`
+  padding: 10px 13px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0593fb;
+`
+
+const StyledLinkParagraph = styled.p`
+  margin: 0;
+  padding: 0;
+`
 
 const GalleryPage = () => {
   const [repos, setRepos] = useState([])
@@ -8,21 +64,26 @@ const GalleryPage = () => {
   const [error, setError] = useState([])
 
   useEffect(() => {
-    let isMounted = true
-
+    let isMounted = false
     const fetchRepos = async () => {
-      setLoading(true)
       try {
+        setLoading(true)
         const response = await axios.get(
           `https://api.github.com/users/JakHer/repos?sort=updated`
         )
-        if (isMounted) {
-          setRepos(response.data)
+        if (!isMounted) {
+          setRepos(
+            response.data.filter(
+              item => item.name !== "JakHer" && item.name !== "gatsby-blog"
+            )
+          )
         }
       } catch (err) {
-        isMounted && setError(err.message)
+        if (!isMounted) {
+          setError(err.message)
+        }
       } finally {
-        isMounted && setLoading(false)
+        setLoading(false)
       }
     }
     fetchRepos()
@@ -30,31 +91,6 @@ const GalleryPage = () => {
       isMounted = false
     }
   }, [])
-
-  // setLoading(true)
-  // let isCanceled = false
-  // axios({
-  //   method: "GET",
-  //   url: `https://api.github.com/users/JakHer/repos?sort=updated`,
-  // })
-  //   .then(resp => {
-  //     if (!isCanceled) {
-  //       setTimeout(() => {
-  //         setRepos(
-  //           resp.data.filter(
-  //             item => item.name !== "JakHer" && item.name !== "gatsby-blog"
-  //           )
-  //         )
-  //         setLoading(false)
-  //       }, 2000)
-  //     }
-  //   })
-  //   .catch(err => {
-  //     if (!isCanceled) {
-  //       setError(err.message)
-  //       setLoading(false)
-  //     }
-  //   })
 
   return (
     <>
@@ -64,11 +100,26 @@ const GalleryPage = () => {
       ) : (
         !isLoading && (
           <>
-            <ul>
-              {repos.map(item => (
-                <li key={item.id}>{item.name}</li>
+            <StyledList>
+              {repos.map(({ id, name, description, html_url, homepage }) => (
+                <StyledListItem key={id}>
+                  <StyledDescriptionWrapper>
+                    <h3>{name}</h3>
+                    <p>{description}</p>
+                  </StyledDescriptionWrapper>
+                  <StyledLinkWrapper>
+                    <StyledLinkParagraph>
+                      <StyledLink href={html_url}>Source</StyledLink>
+                    </StyledLinkParagraph>
+                    {homepage && (
+                      <StyledLinkParagraph>
+                        <StyledLink href={homepage}>Live</StyledLink>
+                      </StyledLinkParagraph>
+                    )}
+                  </StyledLinkWrapper>
+                </StyledListItem>
               ))}
-            </ul>
+            </StyledList>
           </>
         )
       )}
