@@ -15,8 +15,9 @@ const StyledNav = styled.nav`
   left: 0;
   width: 100%;
   padding: 20px 30px;
-  z-index: 10;
+  z-index: 11;
   background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 5px 20px -10px #000;
 
   a {
     text-decoration: none;

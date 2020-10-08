@@ -64,6 +64,9 @@ const GalleryPage = () => {
   const [error, setError] = useState([])
 
   useEffect(() => {
+    const localRepos = JSON.parse(localStorage.getItem("repos"))
+    localRepos && setRepos(localRepos)
+
     let isMounted = false
     const fetchRepos = async () => {
       try {
@@ -77,6 +80,14 @@ const GalleryPage = () => {
               item => item.name !== "JakHer" && item.name !== "gatsby-blog"
             )
           )
+          localStorage.setItem(
+            "repos",
+            JSON.stringify(
+              response.data.filter(
+                item => item.name !== "JakHer" && item.name !== "gatsby-blog"
+              )
+            )
+          )
         }
       } catch (err) {
         if (!isMounted) {
@@ -86,7 +97,7 @@ const GalleryPage = () => {
         setLoading(false)
       }
     }
-    fetchRepos()
+    !localRepos && fetchRepos()
     return () => {
       isMounted = false
     }
