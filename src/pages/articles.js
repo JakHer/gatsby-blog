@@ -28,6 +28,7 @@ const ArticlesPage = ({ data }) => {
     allMdx: { edges },
   } = data
 
+  
   return (
     <>
       <PageInfo title={pageData.title} paragraph={pageData.paragraph} />
