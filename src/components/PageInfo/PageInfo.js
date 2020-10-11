@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 const PageInfo = ({ title, author }) => (
   <Wrapper>
-    <h1>{title}</h1>
+    <h2>{title}</h2>
     <p>{author}</p>
   </Wrapper>
 )

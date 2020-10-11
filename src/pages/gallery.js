@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import axios from "axios"
 import styled from "styled-components"
+import HomePageLink from "../components/HomePageLink/HomePageLink"
 
 const StyledList = styled.ul`
   list-style-type: none;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 50px;
+  margin-bottom: 20px;
 
   @media (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
@@ -58,6 +60,10 @@ const StyledLinkParagraph = styled.p`
   padding: 0;
 `
 
+const StyledHeader = styled.h2`
+  margin-bottom: 20px;
+`
+
 const GalleryPage = () => {
   const [repos, setRepos] = useState([])
   const [isLoading, setLoading] = useState(false)
@@ -105,9 +111,10 @@ const GalleryPage = () => {
 
   return (
     <>
+      <StyledHeader>Take a look at my portfolio projects</StyledHeader>
       {error && <p>{error}</p>}
       {isLoading ? (
-        <div>Loading</div>
+        <div>Loading repos</div>
       ) : (
         !isLoading && (
           <>
@@ -134,9 +141,8 @@ const GalleryPage = () => {
           </>
         )
       )}
-      <h1>Hi from the Gallery page</h1>
-      <p>Welcome to Gallery page</p>
-      <Link to="/">Go back to the homepage</Link>
+
+      <HomePageLink to="/">Siema</HomePageLink>
     </>
   )
 }
