@@ -8,7 +8,7 @@ import HomePageLink from "../components/HomePageLink/HomePageLink"
 const ArticlesWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 50px;
+  grid-gap: 51px;
 
   @media (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
