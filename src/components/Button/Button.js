@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 const Button = styled(Link)`
   background-color: black;
   border: none;
-  padding: 10px 25px;
+  padding: 11px 25px;
   color: white;
   font-size: 13px;
   font-weight: 600;
