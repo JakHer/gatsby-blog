@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import ArticlePreview from "../components/ArticlePrveiew/ArticlePrveiew"
 import PageInfo from "../components/PageInfo/PageInfo"
 import styled from "styled-components"

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
 import axios from "axios"
 import styled from "styled-components"
 import HomePageLink from "../components/HomePageLink/HomePageLink"

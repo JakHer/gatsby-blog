@@ -15,31 +15,31 @@ const StyledImage = styled(Image)`
   }
 `
 
-export const query = graphql`
-  query queryArticle($slug: String!) {
-    mdx(frontmatter: { slug: { eq: $slug } }) {
-      id
-      body
-      frontmatter {
-        title
-        author
-        slug
-        featuredImage {
-          childImageSharp {
-            fluid(maxHeight: 500, maxWidth: 700, quality: 90) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query queryArticle($slug: String!) {
+//     mdx(frontmatter: { slug: { eq: $slug } }) {
+//       id
+//       body
+//       frontmatter {
+//         title
+//         author
+//         slug
+//         featuredImage {
+//           childImageSharp {
+//             fluid(maxHeight: 500, maxWidth: 700, quality: 90) {
+//               ...GatsbyImageSharpFluid_tracedSVG
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 const PostLayout = ({ data }) => {
-  const { title, author } = data.mdx.frontmatter
-  const { body } = data.mdx
-  const { fluid } = data.mdx.frontmatter.featuredImage.childImageSharp
+  // const { title, author } = data.mdx.frontmatter
+  // const { body } = data.mdx
+  // const { fluid } = data.mdx.frontmatter.featuredImage.childImageSharp
   return (
     <div>
       <h1>{title}</h1>

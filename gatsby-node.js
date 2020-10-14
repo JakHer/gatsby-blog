@@ -1,4 +1,5 @@
 const path = require(`path`)
+var slugify = require("slugify")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -9,13 +10,12 @@ exports.createPages = async ({ graphql, actions }) => {
   // Variables can be added as the second function parameter
   const result = await graphql(
     `
-      query queryArticles {
-        allMdx {
+      query articlesQuery {
+        allDatoCmsArticle {
           edges {
             node {
-              frontmatter {
-                slug
-              }
+              title
+              id
             }
           }
         }
@@ -24,13 +24,15 @@ exports.createPages = async ({ graphql, actions }) => {
   )
 
   // Create blog post pages.
-  result.data.allMdx.edges.forEach(post => {
+  result.data.allDatoCmsArticle.edges.forEach(post => {
+    const slugifiedTitle = slugify(post.node.title, { lower: true })
+
     createPage({
       // Path for this page — require
-      path: `articles/${post.node.frontmatter.slug}`,
+      path: `articles/${slugifiedTitle}`,
       component: blogPostTemplate,
       context: {
-        slug: post.node.frontmatter.slug,
+        articleId: id,
       },
     })
   })
