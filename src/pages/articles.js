@@ -4,11 +4,12 @@ import ArticlePreview from "../components/ArticlePrveiew/ArticlePrveiew"
 import PageInfo from "../components/PageInfo/PageInfo"
 import styled from "styled-components"
 import HomePageLink from "../components/HomePageLink/HomePageLink"
+import slugify from "slugify"
 
 const ArticlesWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 51px;
+  grid-gap: 50px;
 
   @media (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
@@ -26,31 +27,23 @@ const pageData = {
 
 const ArticlesPage = ({ data }) => {
   const {
-    allMdx: { edges },
+    allDatoCmsArticle: { edges },
   } = data
 
   return (
     <>
       <PageInfo title={pageData.title} paragraph={pageData.paragraph} />
       <ArticlesWrapper>
-        {edges.map(
-          ({
-            node: {
-              excerpt,
-              frontmatter: { title, slug, featuredImage },
-            },
-          }) => {
-            return (
-              <ArticlePreview
-                key={slug}
-                title={title}
-                excerpt={excerpt}
-                image={featuredImage.childImageSharp.fluid}
-                slug={slug}
-              />
-            )
-          }
-        )}
+        {edges.map(item => {
+          return (
+            <ArticlePreview
+              key={item.node.title}
+              title={item.node.title}
+              image={item.node.featuredImage.fluid}
+              slug={slugify(item.node.title, { lower: true })}
+            />
+          )
+        })}
       </ArticlesWrapper>
       <HomePageLink to="/">Go back to the homepage</HomePageLink>
     </>
@@ -59,21 +52,18 @@ const ArticlesPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allMdx {
+    allDatoCmsArticle {
       edges {
         node {
-          id
-          excerpt(pruneLength: 20)
-          frontmatter {
-            title
-            author
-            slug
-            featuredImage {
-              childImageSharp {
-                fluid(maxHeight: 500, maxWidth: 700, quality: 90) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
+          title
+          author
+          featuredImage {
+            fluid(
+              maxWidth: 600
+              forceBlurhash: false
+              imgixParams: { fm: "jpg", auto: "compress" }
+            ) {
+              ...GatsbyDatoCmsFluid_tracedSVG
             }
           }
         }

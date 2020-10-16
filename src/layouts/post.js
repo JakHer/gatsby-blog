@@ -1,6 +1,5 @@
 import React from "react"
 import Image from "gatsby-image"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 
@@ -9,43 +8,66 @@ const StyledImage = styled(Image)`
   max-height: 350px;
   text-align: center;
   border-radius: 10px;
+  margin: 0 auto;
 
   @media (max-width: 1000px) {
     margin: 0 auto;
   }
 `
 
-// export const query = graphql`
-//   query queryArticle($slug: String!) {
-//     mdx(frontmatter: { slug: { eq: $slug } }) {
-//       id
-//       body
-//       frontmatter {
-//         title
-//         author
-//         slug
-//         featuredImage {
-//           childImageSharp {
-//             fluid(maxHeight: 500, maxWidth: 700, quality: 90) {
-//               ...GatsbyImageSharpFluid_tracedSVG
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  query queryArticle($id: String!) {
+    datoCmsArticle(id: { eq: $id }) {
+      title
+      author
+      articleContent {
+        ... on DatoCmsParagraph {
+          parahraphContent
+          id
+        }
+        ... on DatoCmsHeading {
+          headingContent
+          id
+        }
+        ... on DatoCmsArticleImage {
+          imageData {
+            fluid(
+              maxWidth: 600
+              forceBlurhash: false
+              imgixParams: { fm: "jpg", auto: "compress" }
+            ) {
+              ...GatsbyDatoCmsFluid_tracedSVG
+            }
+          }
+          id
+        }
+      }
+    }
+  }
+`
 
 const PostLayout = ({ data }) => {
-  // const { title, author } = data.mdx.frontmatter
-  // const { body } = data.mdx
-  // const { fluid } = data.mdx.frontmatter.featuredImage.childImageSharp
+  const { title, author } = data.datoCmsArticle
   return (
     <div>
       <h1>{title}</h1>
       <p>{author}</p>
-      <StyledImage fluid={fluid} />
-      <MDXRenderer>{body}</MDXRenderer>
+      {/* <StyledImage fluid={fluid} /> */}
+      <div>
+        {data.datoCmsArticle.articleContent.map(item => {
+          const itemKey = Object.keys(item)[1]
+          switch (itemKey) {
+            case "headingContent":
+              return <h2 key={item.id}>{item.headingContent}</h2>
+            case "parahraphContent":
+              return <p key={item.id}>{item.parahraphContent}</p>
+            case "imageData":
+              return <StyledImage key={item.id} fluid={item.imageData.fluid} />
+            default:
+              return null
+          }
+        })}
+      </div>
     </div>
   )
 }

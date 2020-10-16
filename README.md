@@ -35,7 +35,7 @@ Discovering React's advanced techiques
 - StaticQuery & useStaticQuery hook
 - MDX
 - Markdown && JSX
-
+- DatoCMS
 
 ## Setup
 

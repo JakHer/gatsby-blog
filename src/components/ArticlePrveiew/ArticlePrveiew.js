@@ -48,12 +48,11 @@ const PreviewInfoLabel = styled.div`
   }
 `
 
-const ArticlePreview = ({ title, excerpt, image, slug }) => (
+const ArticlePreview = ({ title, image, slug }) => (
   <PreviewWrapper to={`/articles/${slug}`} image={image}>
     <StyledImg fluid={image} />
     <PreviewInfoLabel>
       <h2>{title}</h2>
-      <p>{excerpt}</p>
     </PreviewInfoLabel>
   </PreviewWrapper>
 )
