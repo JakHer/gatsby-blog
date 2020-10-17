@@ -3,8 +3,24 @@ import HomePageLink from "../components/HomePageLink/HomePageLink"
 
 const ContactPage = () => (
   <>
-    <h1>Hi from the Contact XD page</h1>
-    <p>Welcome to Contact page</p>
+    <form
+      netlify-honeypot="bot-field"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      action="/thank-you"
+    >
+      <input type="hidden" name="form-name" value="Contact Form" />
+      <div>
+        <label htmlFor="email">Your Email:</label>
+        <input type="email" name="email" />
+      </div>
+      <div>
+        <label htmlFor="message">Message:</label>
+        <textarea name="message" />
+      </div>
+      <button type="submit">Send</button>
+    </form>
     <HomePageLink to="/">Go back to homepage</HomePageLink>
   </>
 )

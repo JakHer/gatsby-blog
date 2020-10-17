@@ -23,11 +23,11 @@ const StyledActiveLink = styled(Link)`
 `
 
 const Logo = () => {
-  let myPath = window.location.pathname
+  const url = typeof window !== "undefined" ? window.location.pathname : ""
 
   return (
     <StyledLogo>
-      {myPath !== "/" ? (
+      {url !== "/" ? (
         <StyledLink to="/">JaHe</StyledLink>
       ) : (
         <StyledActiveLink to="/">JaHe</StyledActiveLink>
