@@ -2,13 +2,13 @@ import React from "react"
 import Image from "gatsby-image"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import HomePageLink from "../components/HomePageLink/HomePageLink"
 
 const StyledImage = styled(Image)`
   max-width: 350px;
   max-height: 350px;
   text-align: center;
   border-radius: 10px;
-  margin: 0 auto;
 
   @media (max-width: 1000px) {
     margin: 0 auto;
@@ -52,7 +52,6 @@ const PostLayout = ({ data }) => {
     <div>
       <h1>{title}</h1>
       <p>{author}</p>
-      {/* <StyledImage fluid={fluid} /> */}
       <div>
         {data.datoCmsArticle.articleContent.map(item => {
           const itemKey = Object.keys(item)[1]
@@ -68,6 +67,7 @@ const PostLayout = ({ data }) => {
           }
         })}
       </div>
+      <HomePageLink to="/articles">Go back to articles</HomePageLink>
     </div>
   )
 }

@@ -1,11 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
+import HomePageLink from "../components/HomePageLink/HomePageLink"
 
 const ContactPage = () => (
   <>
-    <h1>Hi from the Contact page</h1>
+    <h1>Hi from the Contact XD page</h1>
     <p>Welcome to Contact page</p>
-    <Link to="/">Go back to the homepage</Link>
+    <HomePageLink to="/">Go back to homepage</HomePageLink>
   </>
 )
 

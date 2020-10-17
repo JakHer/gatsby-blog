@@ -45,7 +45,7 @@ const ArticlesPage = ({ data }) => {
           )
         })}
       </ArticlesWrapper>
-      <HomePageLink to="/">Go back to the homepage</HomePageLink>
+      <HomePageLink to="/">Go back to homepage</HomePageLink>
     </>
   )
 }

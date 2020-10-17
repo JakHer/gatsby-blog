@@ -10,6 +10,8 @@ const StyledLink = styled(Link)`
   color: black;
 `
 
-const HomePageLink = ({ to }) => <StyledLink to={to}>Go to HomePage</StyledLink>
+const HomePageLink = ({ to, children }) => (
+  <StyledLink to={to}>{children}</StyledLink>
+)
 
 export default HomePageLink

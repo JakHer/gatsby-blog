@@ -141,7 +141,7 @@ const GalleryPage = () => {
         )
       )}
 
-      <HomePageLink to="/">Siema</HomePageLink>
+      <HomePageLink to="/">Go back to homepage</HomePageLink>
     </>
   )
 }

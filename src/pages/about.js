@@ -1,11 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
 import Post from "../components/Post/Post"
+import HomePageLink from "../components/HomePageLink/HomePageLink"
 
 const AboutPage = () => (
   <>
     <Post />
-    <Link to="/">Go back to the homepage</Link>
+    <HomePageLink to="/">Go back to homepage</HomePageLink>
   </>
 )
 
