@@ -12,7 +12,7 @@ const ContactPage = () => (
     >
       <input type="hidden" name="form-name" value="Contact Form" />
       <div>
-        <label htmlFor="email">Your Email:</label>
+        <label htmlFor="email">Your Emai</label>
         <input type="email" name="email" />
       </div>
       <div>
