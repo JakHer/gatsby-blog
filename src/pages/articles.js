@@ -9,7 +9,7 @@ import slugify from "slugify"
 const ArticlesWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 51px;
+  grid-gap: 50px;
 
   @media (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
