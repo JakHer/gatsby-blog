@@ -119,6 +119,7 @@ const ContactPage = () => (
       <div>
         <StyledLabel htmlFor="message" />
         <StyledTextArea
+          required
           placeholder="Thank you for leaving a message"
           name="message"
         />
