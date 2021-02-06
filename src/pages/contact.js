@@ -10,7 +10,8 @@ const ContactPage = () => (
       data-netlify="true"
       action="/thank-you"
     >
-      <input type="hidden" name="form-name" value="Contact Form" />
+      <input type="hidden" name="bot-field" />
+      <input type="hidden" name="form-name" value="contact" />
       <div>
         <label htmlFor="email">Your Emai</label>
         <input type="email" name="email" />
