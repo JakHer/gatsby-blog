@@ -109,6 +109,7 @@ const ContactPage = () => (
       <input type="hidden" name="form-name" value="contact" />
       <StyledInputWrapper>
         <StyledInput
+          required
           placeholder="email"
           autoComplete="off"
           type="email"
