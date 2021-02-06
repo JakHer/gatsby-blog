@@ -13,7 +13,7 @@ const ContactPage = () => (
       <input type="hidden" name="bot-field" />
       <input type="hidden" name="form-name" value="contact" />
       <div>
-        <label htmlFor="email">Your Emai</label>
+        <label htmlFor="email">Your Emai Test</label>
         <input type="email" name="email" />
       </div>
       <div>
