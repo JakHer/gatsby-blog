@@ -21,7 +21,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-mdx`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
           {
